@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\api;
 
+use Gate;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\api\PricePermanenceVehicle as PricePermanence;
