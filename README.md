@@ -1,11 +1,11 @@
 # Back-end API - Controle de estacionamento
 
-Projeto de um pequeno sistema de controle de estacionamento
+Projeto de um pequeno sistema de controle de estacionamento.
 
 ## 1. Tecnologias utilizada
 
-	- PHP 8.0.
-	- Laravel 8.
+	- PHP 7.3 | 8.0
+	- Laravel 8
 	- JWTAuth (para autenticação).
 	- Spatie (para controle de acesso).
 
@@ -13,13 +13,13 @@ Projeto de um pequeno sistema de controle de estacionamento
 
 ### 2.1. Executar Migrations
 
-utilize o comando no artisan:
+Utilize o comando no Artisan:
 
 	- php artisan migrate
 
-### 2.2. Executar Seeders
+### 2.2. Executar os Seeders
 
-utilize os comandos no artisan:
+Utilize os comandos no Artisan:
 
 	- php artisan db:seed --class=PermissionsSeeder
 	- php artisan db:seed --class=PricePermanenceVehiclesSeeder
@@ -27,7 +27,7 @@ utilize os comandos no artisan:
 
 #### 2.2.1
 
-	o primeiro Seeder criará as funções, permissões e o registro de 2 usuários (Admin e Collaborator):
+O primeiro Seeder criará as funções, permissões de controle do sistema, e também criará 2 usuários (Admin e Collaborator):
 
 	{
 	    "users": [
@@ -50,7 +50,7 @@ utilize os comandos no artisan:
 	    ]
 	}
 
-	o segundo Seeder criará um preço de permanencia do veiculo (apenas para teste):
+O segundo Seeder criará um preço de permanencia do veiculo (apenas para teste):
 
 	{
 	    "permanences": [
@@ -63,7 +63,7 @@ utilize os comandos no artisan:
 	    ]
 	}
 
-	o terseiro Seeder criará dois veiculos (apenas para teste):
+O terseiro Seeder criará dois veiculos (apenas para teste):
 
 	{
 	    "vehicles": [
@@ -96,10 +96,9 @@ utilize os comandos no artisan:
 
 #### 2.3.1 Rotas de autenticação
 
-	Rota de registro
+Rota REGISTER
 
-	POST	|	/api/auth/register
-
+	POST | /api/auth/register
 	{
 		"name": admin,
 		"email": admin@example.com,
@@ -107,12 +106,12 @@ utilize os comandos no artisan:
 		"password_confirmation": abcd1234,
 	}
 
-	Rota de login
+Rota LOGIN
 
 	POST	|	/api/auth/login
 	header 	|	Authorization: Bearer __token
 
-	Token gerado após o login
+Token gerado após o login
 
 	{
 	    "access_token": <token>,
@@ -124,53 +123,46 @@ utilize os comandos no artisan:
 
 #### 2.3.2 Rotas da Model PermanenceVehicles
 
-	Rota INDEX (list registers)
+Rota INDEX (list registers)
 
 	GET	| api/price-permanence-vehicles
 
-	
-	Rota CREATE
+Rota CREATE
 
-	POST	|	api/price-permanence-vehicles
-
+	POST | api/price-permanence-vehicles
 	{
         "ppv_type_vehicle": "car",
         "ppv_qtd_hours": 1,
         "ppv_price": 5.00,
     }
 
+Rota SHOW
 
-	Rota SHOW
+	GET | api/price-permanence-vehicles/{idPermanence}
 
-	GET	|	api/price-permanence-vehicles/{idPermanence}
+Rota UPDATE
 
-
-	Rota UPDATE
-
-	PUT	|	api/price-permanence-vehicles/{idPermanence}
-
+	PUT	| api/price-permanence-vehicles/{idPermanence}
 	{
         "ppv_type_vehicle": "bus",
         "ppv_qtd_hours": 1,
         "ppv_price": 7.50,
     }
 
+Rota DELETE
 
-    Rota DELETE
-
-	DELETE	|	api/price-permanence-vehicles/{idPermanence}
+	DELETE | api/price-permanence-vehicles/{idPermanence}
 
 #### 2.3.3 Rotas da Model Vehicles
 
-	Rota INDEX (list registers)
+Rota INDEX (list registers)
 
 	GET	| api/vehicles
 
 	
-	Rota CREATE
+Rota CREATE
 
-	POST	|	api/vehicles
-
+	POST | api/vehicles
 	{
         "veh_plate": "654jfx",
         "veh_model": "Onix plus",
@@ -179,16 +171,13 @@ utilize os comandos no artisan:
         "id_price_permanence_vehiculo": 1
     }
 
+Rota SHOW
 
-	Rota SHOW
+	GET	| api/vehicles/{idVehicle}
 
-	GET	|	api/vehicles/{idVehicle}
+Rota UPDATE
 
-
-	Rota UPDATE
-
-	PUT	|	api/vehicles/{idVehicle}
-
+	PUT	| api/vehicles/{idVehicle}
 	{
         "veh_plate": "897ghh",
         "veh_model": "Uno",
@@ -198,28 +187,28 @@ utilize os comandos no artisan:
         "id_price_permanence_vehiculo": 1
     }
 
+Rota DELETE
 
-    Rota DELETE
-
-	DELETE	|	api/vehicles/{idVehicle}
+	DELETE | api/vehicles/{idVehicle}
 
 
-	ROTA END_PERMANENCE
+ROTA END_PERMANENCE
 
-	PUT	 |	api/vehicles/end-permanence/{idVehicle}
+	PUT	| api/vehicles/end-permanence/{idVehicle}
 
 #### 2.3.3 Rotas da Model User
 
-	Rota INDEX (list registers)
+Rota INDEX (list registers)
 
 	GET	| api/users
 
 
-	Rota SHOW
+Rota SHOW
 
-	GET	|	api/users/{idUser}
+	GET	| api/users/{idUser}
 
 
-	Rota DELETE
+Rota DELETE
 
-	DELETE	|	api/users/{idUser}
+	DELETE | api/users/{idUser}
+
